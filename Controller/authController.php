@@ -28,6 +28,6 @@ class AuthController{
             public function LogOut(){
                 AuthModel::LogOut();
                 header('Location: ./');
-                // exit;
+                exit;
             }
     }

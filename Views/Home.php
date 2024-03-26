@@ -1,19 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>I'm In Home</h1>
-    
-    <?php
-    
+<?php
+        include_once(__DIR__.'/Components/header.php');
+
+
+
         include_once(__DIR__.'/Components/ButtonLogOut.php');
-    
-    ?>
-</body>
-</html>
+
+
+
+
+        include_once(__DIR__.'/Components/footer.php');    
+
 
 

@@ -1,6 +1,10 @@
 # Enable the rewrite engine
 RewriteEngine On
-
+# Exclude certain directories or file extensions from being rewritten
+RewriteCond %{REQUEST_URI} !^/assets/
+# Exclude requests for assets directory
+RewriteCond %{REQUEST_URI} !\.(png|jpg|gif|css|js)$
+# Exclude requests for specific file extensions
 # Redirect all requests to index.php
 RewriteRule ^(.*)$ index.php [L]
 

@@ -20,10 +20,10 @@ $router->get('/', 'DashboardController@Index',new LoginMiddleWare());
 $router->get('/Login', 'authController@Index',new notLoginMiddleware());
 $router->post('/Login-check', 'authController@Login');
 $router->post('/LogOut', 'authController@LogOut',new LoginMiddleWare());
+        //handilng File Crud 
+$router->get('/fileAdd','fileController@index',new LoginMiddleWare());        
 
 
-
-$router->get('/about', 'AboutController@index');
 
 
 // Handle the request

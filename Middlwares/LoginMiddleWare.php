@@ -4,11 +4,10 @@ require_once(__DIR__.'/InterfaceMiddleware.php');
 class LoginMiddleWare implements InterfaceMiddleware{
     public function handle(){
         session_start();
-        if (!isset($_SESSION['id'])) {
+        if(!isset($_SESSION['id'])) {
             header('Location: ./Login');
             exit;
         }
-        echo isset($_SESSION['id']);
     } 
 
 }
