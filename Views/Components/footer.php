@@ -12,16 +12,18 @@
          >
       © 2024 Copyright:
       <a class="text-dark" href="https://dxc.com/"
-         >Mohammed Mekkaoui </a
+         >Mohammed Mekkaoui</a
         >
   </footer>
 </div>
 <!-- End of .container -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
 <!-- loding script From other Views -->
+
 <?php if (isset($script)): ?>
   <?php foreach ($script as $script): ?>
-    <script src=<?php echo "Assests/js/".$script?>></script>
+    <script src=<?php echo "assets/js/".$script?>></script>
     <?php endforeach; ?>
 <?php endif; ?>
 

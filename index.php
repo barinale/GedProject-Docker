@@ -1,21 +1,24 @@
 <?php
+
 //inlcude LoginMiddleWare
-include_once(__DIR__.'/Middlwares/LoginMiddleWare.php');
 include_once(__DIR__.'/Middlwares/notLoginMiddleware.php');
+include_once(__DIR__.'/Middlwares/LoginMiddleWare.php');
 
 // Include the router file
-require_once './Router.php';
-
+require_once('./Router.php');
 require_once('./config.php');
 $request = $_SERVER['REQUEST_URI'];
+
 
 // Remove the base path from the request URI
 $cleanRequestUri = str_replace(BASE_PATH,'', $request);
 
 
-// Define routes
+//Define routes
 $router = new Router();
-$router->get('/', 'DashboardController@Index',new LoginMiddleWare());
+$router->get('/','fileController@index');        
+
+// $router->get('/', 'DashboardController@Index',new LoginMiddleWare());
         //handling Login and Connect 
 $router->get('/Login', 'authController@Index',new notLoginMiddleware());
 $router->post('/Login-check', 'authController@Login');
@@ -26,7 +29,7 @@ $router->get('/fileAdd','fileController@index',new LoginMiddleWare());
 
 
 
-// Handle the request
+// // Handle the request
 $router->dispatch($cleanRequestUri,$_SERVER['REQUEST_METHOD']);
 
 

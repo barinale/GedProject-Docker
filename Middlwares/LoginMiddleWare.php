@@ -1,5 +1,6 @@
 <?php
-require_once(__DIR__.'/InterfaceMiddleware.php');
+
+require_once(__DIR__.'/interfaceMiddleware.php');
 //this middleware To Check if User Login 
 class LoginMiddleWare implements InterfaceMiddleware{
     public function handle(){

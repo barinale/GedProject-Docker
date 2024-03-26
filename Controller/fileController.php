@@ -4,6 +4,6 @@
 
     class FileController{
         public function index(){
-            return view("./fileViews/fileAdd.php");
+            return view("./FileViews/fileAdd.php");
         }
     }

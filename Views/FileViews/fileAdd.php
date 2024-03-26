@@ -1,7 +1,10 @@
 <?php   
+    $css = "#spanKey{
+        background:red;margin:7px;
+    }";
     include_once(__DIR__."/../Components/header.php");
     ?>
-        <form action="/submit_form" method="post" id="FormFileAdd">
+<form action="/submit_form" method="post" id="FormFileAdd">
                 <div>
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="name">
@@ -10,13 +13,10 @@
                     <label for="file">File:</label>
                     <input type="file" id="file" name="file">
                 </div>
-                <div>
-                    <label for="date">Date:</label>
-                    <input type="date" id="date" name="date">
-                </div>
+              
                 <div>
                     <label>Type:</label>
-                    <input type="radio" id="email" name="type_file" value="Email">
+                    <input type="radio" id="email" name="type_file" value="Email" checked>
                     <label for="email">Email</label>
 
                     <input type="radio" id="factory" name="type_file" value="Factory">
@@ -67,12 +67,41 @@
                     <label for="amount">Amount:</label>
                     <input type="number" id="amount" name="amount" step="0.01" required><br>
                 </div>
+                <!-- FIled FOr Keywords -->
+                <label for="keywords">keywords</label>
+                <input type="text" name="keywords" value=""             placeholder="Add Your keywords" id="keywordField"/>
+
+                <button id="AddKeywords">Add keywords</button>
+                <!-- place HOlder FOr Keywords -->
+                <div id="placeHolderKeyWords">
+
+                </div>
+                <!-- check permission -->
+                <div>
+                    <input type="radio" id="share" name="sharing_option" value="share">
+
+                    <label for="share">Share</label><br>
+                    
+                    <input type="radio" id="private" name="sharing_option" value="private">
+                    
+                    <label for="private">Private</label><br>
+                </div>
+                    <!-- here field for Adding EMail -->
+                    <div>
+                        <label for="EmailPermission">Email Permission</label>
+                        <input type="email" id="EmailPermission" />
+                        <button id="buttonEmailAdd">Add</button>
+                        <div id="EmailsContainers">
 
 
+                        </div>
+                    </div>
                 <button type="submit">Submit</button>
-        </form>
+</form>
 
     <?php
     $script[] = "FormValidation.js";
-    
+    $script[] = "addKeywords.js";
+    $script[] = "emailPermission.js";
+
 include_once(__DIR__."/../Components/footer.php");

@@ -2,3 +2,4 @@
     interface  InterfaceMiddleware{
         public function handle();
     }
+    ?>
