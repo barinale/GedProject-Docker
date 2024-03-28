@@ -8,10 +8,16 @@
                 <div>
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="name">
+                    <div id="errorName">
+
+                    </div>
                 </div>
                 <div>
                     <label for="file">File:</label>
                     <input type="file" id="file" name="file">
+                    <div id="errorName">
+
+                    </div>
                 </div>
               
                 <div>
@@ -32,40 +38,40 @@
                 <!-- Comand Cheked -->
                 <div id="commandFields">
                     <label for="stuffCommand">Stuff Command:</label>
-                    <input type="text" id="stuffCommand" name="stuffCommand" required><br>
+                    <input type="text" id="stuffCommand" name="stuffCommand" ><br>
     
                     <label for="totalAmount">Total Amount:</label>
-                    <input type="number" id="totalAmount" name="totalAmount" step="0.01" required><br>
+                    <input type="number" id="totalAmount" name="totalAmount" step="0.01" ><br>
                 </div>
 
                 <!-- email Fields if Email Type cheked -->
                 <div id="emailFields">
                     <label for="emailSender">Email Sender:</label>
-                    <input type="email" id="emailSender" name="emailSender" required><br>
+                    <input type="email" id="emailSender" name="emailSender" ><br>
                     
                     <label for="emailReceiver">Email Receiver:</label>
-                    <input type="email" id="emailReceiver" name="emailReceiver" required><br>
+                    <input type="email" id="emailReceiver" name="emailReceiver" ><br>
                     
                     <label for="dateSend">Date of Sending:</label>
-                    <input type="date" id="dateSend" name="dateSend" required><br>
+                    <input type="date" id="dateSend" name="dateSend" ><br>
                 </div>
                 <!-- Factory if Checked -->
 
                 <div id="FacrotyFields">
                     <label for="society">Society:</label>
-                    <input type="text" id="society" name="society" required><br>
+                    <input type="text" id="society" name="society" ><br>
     
                     <label for="amount">Amount:</label>
-                    <input type="number" id="amount" name="amount" step="0.01" required><br>
+                    <input type="number" id="amount" name="amount"  ><br>
                 </div>
 
             <!-- estimate check -->
                 <div id="estimateFields">
                     <label for="stuffToBuy">Stuff to Buy:</label>
-                    <input type="text" id="stuffToBuy" name="stuffToBuy" required><br>
+                    <input type="text" id="stuffToBuy" name="stuffToBuy" ><br>
     
                     <label for="amount">Amount:</label>
-                    <input type="number" id="amount" name="amount" step="0.01" required><br>
+                    <input type="number" id="amount" name="amount"  ><br>
                 </div>
                 <!-- FIled FOr Keywords -->
                 <label for="keywords">keywords</label>
@@ -96,12 +102,14 @@
 
                         </div>
                     </div>
-                <button type="submit">Submit</button>
+                <button id="FormFilesubmit">Submit</button>
 </form>
 
     <?php
     $script[] = "FormValidation.js";
     $script[] = "addKeywords.js";
     $script[] = "emailPermission.js";
+    $script[] = "FieldDisplay.js";
+
 
 include_once(__DIR__."/../Components/footer.php");
