@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
             }
         });
     });
-    
+
 });
 
 //function to show Display

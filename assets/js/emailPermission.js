@@ -8,5 +8,5 @@ buttonAddEmail.addEventListener('click',(e)=>{
     let spanEmail = document.createElement('span')
     spanEmail.textContent = inputEmail.value;
     emailsDiv.appendChild(spanEmail)
-  
+    
 })

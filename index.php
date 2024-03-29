@@ -25,7 +25,7 @@ $router->post('/Login-check', 'authController@Login');
 $router->post('/LogOut', 'authController@LogOut',new LoginMiddleWare());
         //handilng File Crud 
 $router->get('/fileAdd','fileController@index',new LoginMiddleWare());        
-
+$router->post('/fileUpload','fileController@addFile');
 
 
 

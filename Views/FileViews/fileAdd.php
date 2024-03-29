@@ -2,9 +2,11 @@
     $css = "#spanKey{
         background:red;margin:7px;
     }";
+
     include_once(__DIR__."/../Components/header.php");
+    
     ?>
-<form action="/submit_form" method="post" id="FormFileAdd">
+    <form action="./fileUpload" method="POST"           id="FormFileAdd" enctype=multipart/form-data>
                 <div>
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="name">
@@ -15,7 +17,7 @@
                 <div>
                     <label for="file">File:</label>
                     <input type="file" id="file" name="file">
-                    <div id="errorName">
+                    <div id="errorNameFIle">
 
                     </div>
                 </div>
@@ -41,7 +43,11 @@
                     <input type="text" id="stuffCommand" name="stuffCommand" ><br>
     
                     <label for="totalAmount">Total Amount:</label>
-                    <input type="number" id="totalAmount" name="totalAmount" step="0.01" ><br>
+                    <input type="number" id="totalAmount" name="totalAmount" >
+                    <br>
+                    <div id="ErrorCOmmandFIelds">
+
+                    </div>
                 </div>
 
                 <!-- email Fields if Email Type cheked -->
@@ -54,6 +60,9 @@
                     
                     <label for="dateSend">Date of Sending:</label>
                     <input type="date" id="dateSend" name="dateSend" ><br>
+                    <div id="ErrorFIeldsTypeError">
+                        
+                    </div>
                 </div>
                 <!-- Factory if Checked -->
 
@@ -63,6 +72,9 @@
     
                     <label for="amount">Amount:</label>
                     <input type="number" id="amount" name="amount"  ><br>
+                    <div id="ErrorFieldsFActory">
+                        
+                    </div>
                 </div>
 
             <!-- estimate check -->
@@ -71,7 +83,10 @@
                     <input type="text" id="stuffToBuy" name="stuffToBuy" ><br>
     
                     <label for="amount">Amount:</label>
-                    <input type="number" id="amount" name="amount"  ><br>
+                    <input type="number" id="estimatAmount" name="amount"  ><br>
+                    <div id="ErrorFieldsEstimate">
+
+                    </div>                
                 </div>
                 <!-- FIled FOr Keywords -->
                 <label for="keywords">keywords</label>
@@ -83,7 +98,7 @@
 
                 </div>
                 <!-- check permission -->
-                <div>
+                <!-- <div>
                     <input type="radio" id="share" name="sharing_option" value="share">
 
                     <label for="share">Share</label><br>
@@ -91,9 +106,9 @@
                     <input type="radio" id="private" name="sharing_option" value="private">
                     
                     <label for="private">Private</label><br>
-                </div>
+                </div> -->
                     <!-- here field for Adding EMail -->
-                    <div>
+                    <!-- <div>
                         <label for="EmailPermission">Email Permission</label>
                         <input type="email" id="EmailPermission" />
                         <button id="buttonEmailAdd">Add</button>
@@ -101,15 +116,15 @@
 
 
                         </div>
-                    </div>
+                    </div> -->
                 <button id="FormFilesubmit">Submit</button>
 </form>
 
     <?php
-    $script[] = "FormValidation.js";
-    $script[] = "addKeywords.js";
+    $script[] = "FieldDisplay.js"; //1 because there is variable i need to acces in Form VAdliation
     $script[] = "emailPermission.js";
-    $script[] = "FieldDisplay.js";
+    $script[] = "addKeywords.js";
+    $script[] = "FormValidation.js";
 
 
 include_once(__DIR__."/../Components/footer.php");
