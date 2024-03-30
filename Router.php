@@ -33,7 +33,7 @@ class Router {
 
     // Dispatch the request
     public function dispatch($uri, $method) {
-
+   
         // Call middleware before handling the request
         if (isset($this->middleware[$method][$uri])) {
             $this->middleware[$method][$uri]->handle();

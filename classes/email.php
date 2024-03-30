@@ -1,6 +1,6 @@
 <?php
     class Email extends File{
-        private string $path;
+        // private string $path;
         private string $emailSender;
         private string $emailReceiver;
         private DateTime $dateSend;
@@ -35,7 +35,14 @@
         public function save(){
             echo $this->name;
         }
-
+        
+        public static function transaction($mysql,int $id,string $emailR,string $emailS,$dataSend ){
+            
+            $stmt2 = $mysql->prepare("INSERT INTO email (file_id , email_description,email_sender,date_sent) VALUES (?,?,?,?)");
+            $stmt2->bind_param("isss",$id, $emailR, $emailS,$dataSend);
+            $stmt2->execute();
+            $stmt2->close();
+        }
         // //Validate Email Function 
         // function validateEmail($email) {
         //     if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
