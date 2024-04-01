@@ -18,6 +18,7 @@
     <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
   </form>
 </div>
+<a href="./singup" type="button" class="btn btn-secondary">sing Up</a>
 
   <?php
     if(isset($data)){

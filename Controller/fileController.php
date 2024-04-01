@@ -12,7 +12,6 @@
         public function addFile(){
             //variable to check if procces of Adding File complete if Not   Remove File from storage
                 $drop = true;
-                var_dump($_POST['Factoryamount']);
             if(isset($_POST['name']) && isset($_FILES['file']) && 
                                      isset($_POST['type_file'])){
                     if(!File::ValidateFile($_FILES['file'])){

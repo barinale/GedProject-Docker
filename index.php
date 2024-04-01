@@ -18,7 +18,10 @@ $cleanRequestUri = str_replace(BASE_PATH,'', $request);
 $router = new Router();
 
 $router->get('/', 'DashboardController@Index',new LoginMiddleWare());
-        //handling Login and Connect 
+        //handling Login and Connect and singup 
+        $router->post('/singUp','SingUpController@singUp',new notLoginMiddleware());        
+        $router->get('/singup','SingUpController@index',new notLoginMiddleware());   
+
 $router->get('/Login', 'authController@Index',new notLoginMiddleware());
 $router->post('/Login-check', 'authController@Login');
 $router->post('/LogOut', 'authController@LogOut',new LoginMiddleWare());
