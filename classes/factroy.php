@@ -20,4 +20,14 @@ include_once(__DIR__.'/../classes/file.php');
             }
         }
 
-    }
+             //function For Getting All Recorde related To estimate
+            public static function GetAll($con){
+                        $query="SELECT f.name,f.path,u.company,u.amount
+                        FROM factory u
+                        LEFT JOIN file f ON f.id = u.file_id";
+                        $result = $con->query($query);
+                        $rows = $result->fetch_all(MYSQLI_ASSOC);
+                        return $rows;
+            }
+
+}

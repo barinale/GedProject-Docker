@@ -13,5 +13,13 @@ include_once(__DIR__.'/../classes/file.php');
             $stmt2->execute();
             $stmt2->close();
         }
-
+             //function For Getting All Recorde related To estimate
+             public static function GetAll($con){
+                $query="SELECT f.name,f.path,u.command_description,u.total_amount
+                FROM command u
+                LEFT JOIN file f ON f.id = u.file_id";
+                $result = $con->query($query);
+                $rows = $result->fetch_all(MYSQLI_ASSOC);
+                return $rows;
+            }
     }

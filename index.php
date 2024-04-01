@@ -16,16 +16,19 @@ $cleanRequestUri = str_replace(BASE_PATH,'', $request);
 
 //Define routes
 $router = new Router();
-$router->get('/','fileController@index');        
 
-// $router->get('/', 'DashboardController@Index',new LoginMiddleWare());
+$router->get('/', 'DashboardController@Index',new LoginMiddleWare());
         //handling Login and Connect 
 $router->get('/Login', 'authController@Index',new notLoginMiddleware());
 $router->post('/Login-check', 'authController@Login');
 $router->post('/LogOut', 'authController@LogOut',new LoginMiddleWare());
+        //Page For Add Files
+$router->get('/IndexFile','fileController@index',new LoginMiddleWare());        
         //handilng File Crud 
 $router->get('/fileAdd','fileController@index',new LoginMiddleWare());        
-$router->post('/fileUpload','fileController@addFile');
+$router->post('/fileUpload','fileController@addFile',new LoginMiddleWare());
+        //For Getting Files
+$router->get('/fileEmailAll','fileController@emailGet',new LoginMiddleWare());
 
 
 
