@@ -1,5 +1,8 @@
 <?php
-    abstract class File{
+interface FileStructure{
+     public function save();
+}
+    abstract class File implements FileStructure{
         //varaible For Holding PathDirectory to use it 
         //in insert database File path
         public static string $Path;
@@ -71,5 +74,4 @@
                  $stmt1->close();
                      return $mysql->insert_id;
         }
-        abstract public function save();
     }

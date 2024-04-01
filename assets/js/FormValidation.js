@@ -10,7 +10,6 @@ let ErrorFieldsEstimate = document.querySelector('#ErrorFieldsEstimate');
 const FormFile = document.querySelector('#FormFilesubmit');
 FormFile.addEventListener('click',(e)=>{
     e.preventDefault()
-
     //clear All older Code
     ErrorNameCONatainer.textContent=""
     ErrorFIleContainer.textContent=""
@@ -36,6 +35,7 @@ FormFile.addEventListener('click',(e)=>{
         case 'Factory':
             if(!checkFactory())
                 return;
+            console.log("testing")
                 
             break;
         case 'Command':
@@ -48,7 +48,6 @@ FormFile.addEventListener('click',(e)=>{
                     break;
     }
    
-    
     document.querySelector('#FormFileAdd').submit();
 })
 //FUNCTION FOR Check NAME
@@ -102,13 +101,14 @@ function checkFactory(){
 
     
     if(!Society.value || Society.value.trim() == "" ||
-        !Amount.value ||
-        !typeof parseFloat(Amount.value)=="number" ){
+        !Amount.value || !typeof parseFloat(Amount.value)=="number" ){
 
-        ErrorFActoryFields.textContent="Error Societ is REquired And AMount SHould Required and SHOULD be Number";
+        ErrorFActoryFields.textContent="Error Societ is Required And Amount Should Required and Should be Number";
+
         return false;
     }
-
+    console.log(Amount.value)
+    return true;
 }
 //Function For Check Command
 function checkCommand(){

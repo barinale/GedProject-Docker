@@ -6,7 +6,7 @@
     include_once(__DIR__."/../Components/header.php");
     
     ?>
-    <form action="./fileUpload" method="POST"           id="FormFileAdd" enctype=multipart/form-data>
+    <form action="./fileUpload" method="POST" id="FormFileAdd" enctype=multipart/form-data>
                 <div>
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="name">
@@ -71,7 +71,7 @@
                     <input type="text" id="society" name="society" ><br>
     
                     <label for="amount">Amount:</label>
-                    <input type="number" id="amount" name="amount"  ><br>
+                    <input type="number" id="amount" name="Factoryamount"  ><br>
                     <div id="ErrorFieldsFActory">
                         
                     </div>

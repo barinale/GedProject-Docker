@@ -10,14 +10,16 @@
 
         //function For Adding File 
         public function addFile(){
-            //variable to check if procces of Adding File complete if Not Remove File from storage
+            //variable to check if procces of Adding File complete if Not   Remove File from storage
                 $drop = true;
+                var_dump($_POST['Factoryamount']);
             if(isset($_POST['name']) && isset($_FILES['file']) && 
-            isset($_POST['type_file'])){
+                                     isset($_POST['type_file'])){
                     if(!File::ValidateFile($_FILES['file'])){
                         return false;
                     }
                     $this->dirPath = File::$Path;
+                    echo $_POST['amount'];
                 switch($_POST['type_file']){
                         case 'Email':
                             try{
@@ -34,6 +36,42 @@
                             }
 
                         break;
+                        case 'Factory':
+
+                                if(isset($_POST['society']) && isset($_POST['Factoryamount'])){
+                                    try{
+                                    $drop = fileModel::facrtoyInsert($_POST['name'],$this->dirPath,$_POST['society'],$_POST['Factoryamount']);
+                                    }catch(Exception $e){
+                                        echo $e->getMessage();
+                                        $drop=false;
+                                    }
+                                }else
+                                $drop=false;
+
+                                
+                            break;
+                            case 'Command':
+                                if(isset($_POST['stuffCommand']) && isset($_POST['totalAmount'])){
+                                    try{
+                                    $drop = fileModel::commandInsertion($_POST['name'],$this->dirPath,$_POST['stuffCommand'],$_POST['totalAmount']);
+                                    }catch(Exception $e){
+                                        echo $e->getMessage();
+                                        $drop=false;
+                                    }
+                                }else
+                                $drop=false;
+                            break;
+                            case 'Quote':
+                                if(isset($_POST['stuffToBuy']) && isset($_POST['amount'])){
+                                    try{
+                                    $drop = fileModel::estimateInsertion($_POST['name'],$this->dirPath,$_POST['stuffToBuy'],$_POST['amount']);
+                                        }catch(Exception $e){
+                                        echo $e->getMessage();
+                                        $drop=false;
+                                    }
+                                }else
+                                $drop=false;
+                                break;
                 };
                 if(!$drop){
                     File::DeleteFile($this->dirPath);
