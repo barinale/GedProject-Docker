@@ -1,7 +1,12 @@
 <?php
+namespace Ged\Controller;
 
-    include_once(__DIR__.'/../Library/readingView.php');
-    include_once(__DIR__.'/../Models/fileModel.php');
+use Ged\classes\File;
+use Ged\Models\fileModel;
+
+use function Ged\Library\view;
+
+
     class FileController{
         private $dirPath;
         public function index(){
@@ -28,7 +33,7 @@
                             $drop = fileModel::EmailInsert($_POST['name'],$this->dirPath,$_POST['emailSender'],$_POST['emailReceiver'],$_POST['dateSend']);
                             }
                         }
-                         catch(Exception $e)
+                         catch(\Exception $e)
                             {
                                 $drop = false;
                                 echo "somethong Went Wront";
@@ -40,7 +45,7 @@
                                 if(isset($_POST['society']) && isset($_POST['Factoryamount'])){
                                     try{
                                     $drop = fileModel::facrtoyInsert($_POST['name'],$this->dirPath,$_POST['society'],$_POST['Factoryamount']);
-                                    }catch(Exception $e){
+                                    }catch(\Exception $e){
                                         echo $e->getMessage();
                                         $drop=false;
                                     }
@@ -53,7 +58,7 @@
                                 if(isset($_POST['stuffCommand']) && isset($_POST['totalAmount'])){
                                     try{
                                     $drop = fileModel::commandInsertion($_POST['name'],$this->dirPath,$_POST['stuffCommand'],$_POST['totalAmount']);
-                                    }catch(Exception $e){
+                                    }catch(\Exception $e){
                                         echo $e->getMessage();
                                         $drop=false;
                                     }
@@ -64,7 +69,7 @@
                                 if(isset($_POST['stuffToBuy']) && isset($_POST['amount'])){
                                     try{
                                     $drop = fileModel::estimateInsertion($_POST['name'],$this->dirPath,$_POST['stuffToBuy'],$_POST['amount']);
-                                        }catch(Exception $e){
+                                        }catch(\Exception $e){
                                         echo $e->getMessage();
                                         $drop=false;
                                     }

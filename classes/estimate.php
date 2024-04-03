@@ -1,5 +1,6 @@
 <?php
-include_once(__DIR__.'/../classes/file.php');
+namespace Ged\classes;
+
     class Estimate extends File{
         public function save(){
 

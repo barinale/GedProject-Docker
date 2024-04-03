@@ -1,18 +1,17 @@
 <?php
+namespace Ged\Models;
 
-use App\database\Database;
-
-    include_once(__DIR__.'/../Database/Database.php');
-    include_once(__DIR__.'/../classes/file.php');
-    include_once(__DIR__.'/../classes/Email.php');
-    include_once(__DIR__.'/../classes/Factroy.php');
-    include_once(__DIR__.'/../classes/Command.php');
-    include_once(__DIR__.'/../classes/Estimate.php');
-
+use Ged\classes\Command;
+use Ged\classes\Email;
+use Ged\classes\Estimate;
+use Ged\classes\Factroy;
+use Ged\classes\File;
+use Ged\database\Database;
 
 
 
-    class fileModel{
+
+    class FileModel{
 
         //For Insertion Email
         public static function EmailInsert($name,$path,$emailS,$emaiR,$dateSend) : bool{
@@ -20,13 +19,13 @@ use App\database\Database;
             $con = Database::Connect();
             $con->begin_transaction();
             try{
-                $inserted_id=file::transction($con,$name,$path);
+                $inserted_id=File::transction($con,$name,$path);
                 // Prepare INSERT statement for table 2
                 Email::transaction($con,$inserted_id,$emaiR,$emailS,$dateSend);
                 //  // Commit transaction
                 $con->commit();
                 // echo "All inserts successful!";
-            }catch(Exception $e){
+            }catch(\Exception $e){
                  // Rollback transaction
                 $con->rollback();
                 echo "Error: " ;
@@ -50,7 +49,7 @@ use App\database\Database;
                 //  // Commit transaction
                 $con->commit();
                 // echo "All inserts successful!";
-            }catch(Exception $e){
+            }catch(\Exception $e){
                  // Rollback transaction
                 $con->rollback();
                 echo "Error: " ;
@@ -74,7 +73,7 @@ use App\database\Database;
                 //  // Commit transaction
                 $con->commit();
                 // echo "All inserts successful!";
-            }catch(Exception $e){
+            }catch(\Exception $e){
                  // Rollback transaction
                 $con->rollback();
                 echo "Error: " ;
@@ -98,7 +97,7 @@ use App\database\Database;
                 //  // Commit transaction
                 $con->commit();
                 // echo "All inserts successful!";
-            }catch(Exception $e){
+            }catch(\Exception $e){
                  // Rollback transaction
                 $con->rollback();
                 echo "Error:" ;

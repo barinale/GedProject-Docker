@@ -1,6 +1,6 @@
 <?php
+namespace Ged\Middlwares;
 
-require_once(__DIR__.'/interfaceMiddleware.php');
 //this middleware To Check if User Login 
 class LoginMiddleWare implements InterfaceMiddleware{
     public function handle(){

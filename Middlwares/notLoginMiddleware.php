@@ -1,7 +1,8 @@
 <?php
-    require_once(__DIR__.'/interfaceMiddleware.php');
+namespace Ged\Middlwares;
+
     //this middleware To Check if User Login 
-    class notLoginMiddleware implements InterfaceMiddleware{
+    class NotLoginMiddleware implements InterfaceMiddleware{
         public function handle(){
             session_start();
             if (isset($_SESSION['id'])) {

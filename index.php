@@ -1,11 +1,15 @@
 <?php
+require_once(realpath('vendor/autoload.php'));
 
-//inlcude LoginMiddleWare
-include_once(__DIR__.'/Middlwares/notLoginMiddleware.php');
-include_once(__DIR__.'/Middlwares/LoginMiddleWare.php');
+use Ged\Router\Router;
+use Ged\Middlwares\NotLoginMiddleware;
+
+// use App\Middlware\LoginMiddleWare;
+// use App\Middlware\notLoginMiddleware;
+
 
 // Include the router file
-require_once('./Router.php');
+// require_once('./Router.php');
 require_once('./config.php');
 $request = $_SERVER['REQUEST_URI'];
 
@@ -16,22 +20,23 @@ $cleanRequestUri = str_replace(BASE_PATH,'', $request);
 
 //Define routes
 $router = new Router();
+$router->get('/', 'DashboardController@Index');
+$router->post('/singUp','SingUpController@singUp',new NotLoginMiddleware());  
+// $router->get('/', 'DashboardController@Index',new LoginMiddleWare());
+//         //handling Login and Connect and singup 
+//         $router->post('/singUp','SingUpController@singUp',new notLoginMiddleware());        
+//         $router->get('/singup','SingUpController@index',new notLoginMiddleware());   
 
-$router->get('/', 'DashboardController@Index',new LoginMiddleWare());
-        //handling Login and Connect and singup 
-        $router->post('/singUp','SingUpController@singUp',new notLoginMiddleware());        
-        $router->get('/singup','SingUpController@index',new notLoginMiddleware());   
-
-$router->get('/Login', 'authController@Index',new notLoginMiddleware());
-$router->post('/Login-check', 'authController@Login');
-$router->post('/LogOut', 'authController@LogOut',new LoginMiddleWare());
-        //Page For Add Files
-$router->get('/IndexFile','fileController@index',new LoginMiddleWare());        
-        //handilng File Crud 
-$router->get('/fileAdd','fileController@index',new LoginMiddleWare());        
-$router->post('/fileUpload','fileController@addFile',new LoginMiddleWare());
-        //For Getting Files
-$router->get('/fileEmailAll','fileController@emailGet',new LoginMiddleWare());
+// $router->get('/Login', 'authController@Index',new notLoginMiddleware());
+// $router->post('/Login-check', 'authController@Login');
+// $router->post('/LogOut', 'authController@LogOut',new LoginMiddleWare());
+//         //Page For Add Files
+// $router->get('/IndexFile','fileController@index',new LoginMiddleWare());        
+//         //handilng File Crud 
+// $router->get('/fileAdd','fileController@index',new LoginMiddleWare());        
+// $router->post('/fileUpload','fileController@addFile',new LoginMiddleWare());
+//         //For Getting Files
+// $router->get('/fileEmailAll','fileController@emailGet',new LoginMiddleWare());
 
 
 

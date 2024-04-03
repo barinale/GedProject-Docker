@@ -1,4 +1,5 @@
 <?php
+namespace Ged\Router;
 class Router {
     private $routes = [];
     private $middleware = [];
@@ -52,8 +53,8 @@ class Router {
         list($controller, $method) = explode('@', $action);
 
         // Include the controller file
-        require_once 'Controller/' . $controller . '.php';
-
+        require_once 'Controller/'.$controller.'.php';
+        // $var = '\\Controller\\'.$controller;
         // Create controller object
         $controllerObj = new $controller();
 

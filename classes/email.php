@@ -1,9 +1,11 @@
 <?php
+namespace Ged\classes;
+
     class Email extends File{
         // private string $path;
         private string $emailSender;
         private string $emailReceiver;
-        private DateTime $dateSend;
+        private \DateTime $dateSend;
         public function __construct(int $id_user,string $name,string $path){
             parent::__construct($id_user,$name,$path);
 
@@ -24,11 +26,11 @@
             $this->emailReceiver = $receiver;
         }
     
-        public function getDateSend(): DateTime {
+        public function getDateSend(): \DateTime {
             return $this->dateSend;
         }
 
-        public function setDateSend(DateTime $date): void {
+        public function setDateSend(\DateTime $date): void {
             $this->dateSend = $date;
         }
 

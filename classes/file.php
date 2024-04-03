@@ -1,4 +1,6 @@
 <?php
+namespace Ged\classes;
+
 interface FileStructure{
      public function save();
 }

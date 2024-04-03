@@ -1,7 +1,7 @@
 <?php
-    namespace Model;
-    require_once(__DIR__.'/../Database/Database.php');
-    use App\database as database;
+    namespace Ged\Models;
+
+use Ged\database\Database;
 use Error;
 use Exception;
 
@@ -11,7 +11,7 @@ use Exception;
                 
                 $drop = false;
                 try{
-                $con = database\Database::Connect();
+                $con = Database::Connect();
                 $stm = $con->prepare("select * from users where email = ?");
                 $stm->bind_param('s',$email);
                 $stm->execute();

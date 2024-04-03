@@ -1,5 +1,6 @@
 <?php  
-include_once(__DIR__.'/../classes/file.php');
+namespace Ged\classes;
+
     class Factroy extends File{
 
         public function __construct(int $id_user, string $name, string $path){
@@ -15,8 +16,8 @@ include_once(__DIR__.'/../classes/file.php');
             $stmt2->bind_param("iss",$id, $socirty, $amount);
             $stmt2->execute();
             $stmt2->close();
-            }catch(Exception $e){
-                throw new Exception($e->getMessage());
+            }catch(\Exception $e){
+                throw new \Exception($e->getMessage());
             }
         }
 

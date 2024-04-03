@@ -1,7 +1,10 @@
 <?php
-    include_once(__DIR__.'/../Library/readingView.php');
-    include_once(__DIR__.'/../Models/fileModel.php');
-    include_once(__DIR__.'/../Models/dashboardModel.php');
+namespace Ged\Controller;
+
+use Ged\Models\DashboardModel;
+
+use function Ged\Library\view;
+
     class DashboardController{
         public function Index(){
             $dashboardModel = new DashboardModel();

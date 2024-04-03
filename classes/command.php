@@ -1,5 +1,5 @@
 <?php
-include_once(__DIR__.'/../classes/file.php');
+namespace Ged\classes;
 
     class Command extends File{
         

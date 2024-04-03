@@ -1,5 +1,5 @@
 <?php
-    namespace App\database;
+    namespace Ged\Database;
     include_once(__DIR__ . '/../config.php');
     
     class Database{

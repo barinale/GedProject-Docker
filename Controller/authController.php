@@ -1,10 +1,10 @@
 <?php
+namespace Ged\Controller;
 
-use Model\AuthModel;
+use Ged\Models\AuthModel;
 
-include_once(__DIR__.'/../Library/readingView.php');
-// //include authentication Model
-include_once(__DIR__.'/../Models/AuthModel.php');
+use function Ged\Library\view;
+
 class AuthController{
 
         public function Index(){

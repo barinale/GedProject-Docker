@@ -1,6 +1,8 @@
 <?php
+namespace Ged\Controller;
 
-include_once(__DIR__.'/../Library/readingView.php');
+use function Ged\Library\view;
+
     class SingUpController{
 
         public function index(){
