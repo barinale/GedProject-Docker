@@ -19,7 +19,7 @@ $router = new Router();
 
 $router->get('/', 'DashboardController@Index',new LoginMiddleWare());
         //handling Login and Connect and singup 
-        $router->post('/singUp','SingUpController@singUp',new notLoginMiddleware());        
+        $router->post('/singUpHand','SingUpController@singUp',new notLoginMiddleware());        
         $router->get('/singup','SingUpController@index',new notLoginMiddleware());   
 
 $router->get('/Login', 'authController@Index',new notLoginMiddleware());
