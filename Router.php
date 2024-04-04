@@ -53,7 +53,7 @@ class Router {
 
         // Include the controller file
         require_once 'Controller/' . $controller . '.php';
-
+        
         // Create controller object
         $controllerObj = new $controller();
 
