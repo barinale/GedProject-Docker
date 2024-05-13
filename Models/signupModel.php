@@ -10,7 +10,10 @@ use App\database as database;
                     $stm = $con->prepare('insert into users (name,email,password) values(?,?,?)');
                     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
                     $stm->bind_param('sss',$name,$email,$hashed_password);
+                    
                     if($stm->execute()){
+                        session_start();
+                        $_SESSION['id']=$stm->insert_id;
                         return true;
                     }else{
                         return false;

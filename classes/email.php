@@ -45,10 +45,11 @@
         }
           //function For Getting All Recorde related To email
           public static function GetAll($con){
-            $query="SELECT f.name,f.path,u.email_description,u.email_sender,u.date_sent
-            FROM email u
-            LEFT JOIN file f ON f.id = u.file_id";
+            $query='SELECT f.name,f.path,u.email_description,u.email_sender,u.date_sent FROM email u LEFT JOIN file f ON f.id = u.file_id';
+          
             $result = $con->query($query);
+
+
             $rows = $result->fetch_all(MYSQLI_ASSOC);
             return $rows;
         }

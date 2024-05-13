@@ -1,5 +1,5 @@
 <?php
-define('BASE_PATH', "/GedProject");//Url for Ubutnu
+define('BASE_PATH', "/project/GedProject");//Url for Ubutnu
 // define('BASE_PATH', "/Project/Ged");//Url Base windows
 
 //Variable for Database

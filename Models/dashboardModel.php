@@ -12,8 +12,6 @@
             $Emails = Email::GetAll($con);
             $factroy = Factroy::GetAll($con);
             $estimate = Estimate::GetAll($con);
-            $command = Command::GetAll($con);
-
             $data = array('email'=>$Emails,'factory'=>$factroy,"estimate"=>$estimate,'command'=>$command);
             $con->close();
             return $data;
