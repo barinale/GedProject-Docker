@@ -49,7 +49,6 @@
           
             $result = $con->query($query);
 
-
             $rows = $result->fetch_all(MYSQLI_ASSOC);
             return $rows;
         }

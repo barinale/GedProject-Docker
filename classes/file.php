@@ -6,8 +6,8 @@ interface FileStructure{
         //varaible For Holding PathDirectory to use it 
         //in insert database File path
         public static string $Path;
-        public function __construct(protected int $id_user,protected string $name,protected string $path){
-
+        public function __construct( int $id_user, string $name, string $path){
+            
         }
         //Fucntion For Delete File From storage
         public static function DeleteFile($PathToFile){
@@ -21,7 +21,7 @@ interface FileStructure{
             }
         }
         //function For Check Validate File
-        public static function ValidateFile($file) : mixed{
+        public static function ValidateFile($file) : bool{ //here was return for mixed but it give me error so a change it
             if ($file["error"] == 0) {
                 $targetDir = "uploads/";
                  // Directory where the file will be stored
@@ -66,7 +66,7 @@ interface FileStructure{
         }
         //for transction tak $mysql @string name for NameFile
         //and @path For Path File
-        public static function transction($mysql,string $name,string $path):mixed{
+        public static function transction($mysql,string $name,string $path):int{
                  // Prepare INSERT statement for table 1
                  $stmt1 = $mysql->prepare("INSERT INTO file (name, path) VALUES (?, ?)");
                  $stmt1->bind_param("ss", $name, $path);

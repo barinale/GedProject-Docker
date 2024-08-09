@@ -4,10 +4,10 @@ use App\database\Database;
 
     include_once(__DIR__.'/../Database/Database.php');
     include_once(__DIR__.'/../classes/file.php');
-    include_once(__DIR__.'/../classes/Email.php');
-    include_once(__DIR__.'/../classes/Factroy.php');
-    include_once(__DIR__.'/../classes/Command.php');
-    include_once(__DIR__.'/../classes/Estimate.php');
+    include_once(__DIR__.'/../classes/email.php');
+    include_once(__DIR__.'/../classes/factroy.php');
+    include_once(__DIR__.'/../classes/command.php');
+    include_once(__DIR__.'/../classes/estimate.php');
 
 
 

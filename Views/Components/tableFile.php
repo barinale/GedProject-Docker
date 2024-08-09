@@ -1,4 +1,5 @@
 <?php foreach ($data as $dat=>$value): ?>
+    
     <?php echo "<h1>".$dat."</h1>";?> 
 
         <?php if ($dat == 'email'): ?>
@@ -62,7 +63,7 @@
                 </tr>
                 </thead>
                 <tbody>
-            <?php foreach ($value as $row): ?>
+                <?php foreach ($value as $row): ?>
                 <tr>
                     <th scope="row"><?php echo $row['name'] ?></th>
                     <td><?php echo $row['path'] ?></td>
@@ -85,6 +86,7 @@
                 </thead>
                 <tbody>
             <?php foreach ($value as $row): ?>
+
                 <tr>
                     <th scope="row"><?php echo $row['name'] ?></th>
                     <td><?php echo $row['path'] ?></td>

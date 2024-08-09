@@ -5,9 +5,14 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - .:/var/www/html
+      - ./uploads:/var/www/html/uploads 
+      - .:/var/www/html 
     ports:
       - 8080:80
+    command: >
+      bash -c "chown -R www-data:www-data /var/www/html/uploads && 
+               chmod -R 775 /var/www/html/uploads && 
+               apache2-foreground"
     depends_on:
       - mysql
   mysql:
