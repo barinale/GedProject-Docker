@@ -36,22 +36,30 @@
             echo $this->name;
         }
         
-        public static function transaction($mysql,int $id,string $emailR,string $emailS,$dataSend ){
+        public static function transactionE($pdo, int $id, string $emailR, string $emailS, string $dataSend): void {
+            $stmt2 = $pdo->prepare("INSERT INTO email (file_id, email_description, email_sender, date_sent) VALUES (:file_id, :email_description, :email_sender, :date_sent)");
             
-            $stmt2 = $mysql->prepare("INSERT INTO email (file_id , email_description,email_sender,date_sent) VALUES (?,?,?,?)");
-            $stmt2->bind_param("isss",$id, $emailR, $emailS,$dataSend);
+            // Bind parameters
+            $stmt2->bindParam(':file_id', $id, \PDO::PARAM_INT);
+            $stmt2->bindParam(':email_description', $emailR);
+            $stmt2->bindParam(':email_sender', $emailS);
+            $stmt2->bindParam(':date_sent', $dataSend);
+            
+            // Execute the statement
             $stmt2->execute();
-            $stmt2->close();
         }
+        
           //function For Getting All Recorde related To email
-          public static function GetAll($con){
-            $query='SELECT f.name,f.path,u.email_description,u.email_sender,u.date_sent FROM email u LEFT JOIN file f ON f.id = u.file_id';
-          
-            $result = $con->query($query);
-
-            $rows = $result->fetch_all(MYSQLI_ASSOC);
+          public static function GetAll($con) {
+            $query = 'SELECT f.name, f.path, u.email_description, u.email_sender, u.date_sent 
+                      FROM email u 
+                      LEFT JOIN file f ON f.id = u.file_id';
+        
+            $stmt = $con->query($query);
+            $rows = $stmt->fetchAll(\PDO::FETCH_ASSOC);
             return $rows;
         }
+        
         // //Validate Email Function 
         // function validateEmail($email) {
         //     if(filter_var($email, FILTER_VALIDATE_EMAIL)) {

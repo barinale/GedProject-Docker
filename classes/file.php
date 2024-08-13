@@ -66,12 +66,19 @@ interface FileStructure{
         }
         //for transction tak $mysql @string name for NameFile
         //and @path For Path File
-        public static function transction($mysql,string $name,string $path):int{
-                 // Prepare INSERT statement for table 1
-                 $stmt1 = $mysql->prepare("INSERT INTO file (name, path) VALUES (?, ?)");
-                 $stmt1->bind_param("ss", $name, $path);
-                 $stmt1->execute();
-                 $stmt1->close();
-                     return $mysql->insert_id;
+        public static function transaction($pdo, string $name, string $path) {
+            // Prepare INSERT statement for table 1
+            $stmt1 = $pdo->prepare("INSERT INTO file (name, path) VALUES (:name, :path)");
+            $stmt1->bindParam(':name', $name);
+            $stmt1->bindParam(':path', $path);
+            
+            // Execute the statement
+            $stmt1->execute();
+            
+            // Get the last inserted ID
+            $lastInsertId = $pdo->lastInsertId();
+            
+            return $lastInsertId;
         }
+        
     }

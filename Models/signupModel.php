@@ -1,27 +1,37 @@
 <?php
-require_once(__DIR__.'/../Database/Database.php');
-use App\database as database;
+require_once(__DIR__ . '/../Database/Database.php');
+use App\database\Database;
 
-    class SingUpModels{
-        
-        public static function singUp($name,$email,$password){
-                try{
-                    $con = database\Database::Connect();
-                    $stm = $con->prepare('insert into users (name,email,password) values(?,?,?)');
-                    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-                    $stm->bind_param('sss',$name,$email,$hashed_password);
-                    
-                    if($stm->execute()){
-                        session_start();
-                        $_SESSION['id']=$stm->insert_id;
-                        return true;
-                    }else{
-                        return false;
-                    }
-                }catch(Exception $e){
-                    throw new Exception($e->getMessage());
-                }
-            }
-            
+class SignUpModels {
+ 
+public static function signUp($name, $email, $password) {
+ try {
+ $pdo = Database::connect(); // Use PDO connection
+ $sql = 'INSERT INTO users (name, email, password) VALUES (:name, :email, :password)';
+ $stmt = $pdo->prepare($sql);
 
-    }
+// Hash the password
+ $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+// Bind parameters
+ $stmt->bindParam(':name', $name);
+ $stmt->bindParam(':email', $email);
+ $stmt->bindParam(':password', $hashed_password);
+
+// Execute the query
+ if ($stmt->execute()) {
+ // Retrieve the last inserted ID
+ $lastInsertId = $pdo->lastInsertId();
+ 
+// Start the session and store the ID
+ session_start();
+ $_SESSION['id'] = $lastInsertId;
+ return true;
+ } else {
+ return false;
+ }
+ } catch (Exception $e) {
+ throw new Exception($e->getMessage());
+ }
+ }
+}

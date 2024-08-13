@@ -12,7 +12,7 @@ require_once(__DIR__.'/../Models/signupModel.php');
             //Check Variable Fisrt
             if(isset($_POST['Name']) && isset($_POST['Email']) && isset($_POST['Password']) && isset($_POST['PasswordConfig'])){
                 if($_POST['Password'] == $_POST['PasswordConfig']){
-                    $singDrop = SingUpModels::singUp($_POST['Name'],$_POST['Email'],$_POST['Password']);
+                    $singDrop = SignUpModels::signUp($_POST['Name'],$_POST['Email'],$_POST['Password']);
                     
                     if($singDrop){
                             header('Location: ./');

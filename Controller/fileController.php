@@ -39,7 +39,7 @@
 
                                 if(isset($_POST['society']) && isset($_POST['Factoryamount'])){
                                     try{
-                                    $drop = fileModel::facrtoyInsert($_POST['name'],$this->dirPath,$_POST['society'],$_POST['Factoryamount']);
+                                    $drop = fileModel::factoryInsert($_POST['name'],$this->dirPath,$_POST['society'],$_POST['Factoryamount']);
                                     }catch(Exception $e){
                                         echo $e->getMessage();
                                         $drop=false;

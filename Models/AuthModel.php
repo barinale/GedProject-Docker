@@ -1,40 +1,38 @@
 <?php
-    namespace Model;
-    require_once(__DIR__.'/../Database/Database.php');
-    use App\database as database;
+namespace Model;
+
+require_once(__DIR__.'/../Database/Database.php');
+use App\database\Database;
 use Error;
 use Exception;
 
-    class AuthModel{
-        //function for check user Login Information
-            public static function CheckCreadintaiol($email,$password) {
-                
-                $drop = false;
-                try{
-                $con = database\Database::Connect();
-                $stm = $con->prepare("select * from users where email = ?");
-                $stm->bind_param('s',$email);
-                $stm->execute();
-                $result = $stm->get_result(); 
-                $data = $result->fetch_assoc();
-                if (password_verify($password, $data['password'])) {
-                    // Password is correct, authentication successful
-                    session_start();
-                    $_SESSION['id']=$data['id'];
-                    $drop=true;
-                } }
-                catch(Exception $e){
-                    throw new Error($e->getMessage());
-                }finally{
-                    $stm->close();
-                }
-                return $drop;   
-            }
+class AuthModel {
+    // Function to check user login information
+    public static function CheckCredentials($email, $password) {
+        $authenticated = false;
+        try {
+            $pdo = Database::connect();
+            $sql = "SELECT * FROM users WHERE email = :email";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':email', $email);
+            $stmt->execute();
+            $data = $stmt->fetch(\PDO::FETCH_ASSOC);
 
-            //Function For Log Out
-            public static function LogOut(){
-                $_SESSION = array();
-                session_destroy();
+            if ($data && password_verify($password, $data['password'])) {
+                // Password is correct, authentication successful
+                session_start();
+                $_SESSION['id'] = $data['id'];
+                $authenticated = true;
             }
-
+        } catch (Exception $e) {
+            throw new Error($e->getMessage());
+        }
+        return $authenticated;   
     }
+
+    // Function to log out
+    public static function LogOut() {
+        $_SESSION = array();
+        session_destroy();
+    }
+}

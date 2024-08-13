@@ -3,7 +3,7 @@
     include_once(__DIR__.'/../Database/Database.php');
     include_once(__DIR__.'/../classes/email.php');
     include_once(__DIR__.'/../classes/estimate.php');
-    include_once(__DIR__.'/../classes/factroy.php');
+    include_once(__DIR__.'/../classes/factory.php');
     include_once(__DIR__.'/../classes/command.php');
 
     class DashboardModel{
@@ -14,7 +14,7 @@
             $estimate = Estimate::GetAll($con);
             $command = Command::GetAll($con);
             $data = array('email'=>$Emails,'factory'=>$factroy,"estimate"=>$estimate,'command'=>$command);
-            $con->close();
+            
             return $data;
         }
     }

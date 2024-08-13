@@ -15,7 +15,7 @@ class AuthController{
             $res=false;
             if($_SERVER['REQUEST_METHOD']=='POST' && isset($_REQUEST['email']) && isset($_REQUEST['password']))
                 {
-                    $res = AuthModel::CheckCreadintaiol($_POST['email'],$_POST['password']);
+                    $res = AuthModel::CheckCredentials($_POST['email'],$_POST['password']);
                     if($res && isset($_SESSION['id'])){
                         header('Location: ./');
                         exit;

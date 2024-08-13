@@ -3,7 +3,7 @@ define('BASE_PATH', "/project/GedProject");//Url for Ubutnu
 // define('BASE_PATH', "/Project/Ged");//Url Base windows
 
 //Variable for Database
-define('URL','mysql');
-define('USERNAME','root');
-define('PASSWORD','secret');
-define('DATABASE','GedDatabase');
+define('URL','postgres');
+define('USERNAME','myuser');
+define('PASSWORD','mypassword');
+define('DATABASE','mydatabase');
